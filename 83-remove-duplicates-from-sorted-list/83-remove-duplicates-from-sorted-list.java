@@ -11,21 +11,17 @@
 class Solution {
        public ListNode deleteDuplicates(ListNode head) {
         if(head == null || head.next ==null) return head;
-        
-        ArrayList<Integer> dep =new ArrayList();
-        dep.add(head.val);  
-        
-           ListNode curr=head;
+         ListNode curr=head;
+           
         while (head !=null && head.next !=null )
         {
-            if(!dep.contains(head.next.val))
+            if(head.next.val==head.val)
             {
-                dep.add(head.next.val);
-                 head =head.next; 
+                head.next =head.next.next;
                 continue;
             }
-              
-           head.next =head.next.next;
+            head =head.next; 
+
         }
        return curr;
     }
